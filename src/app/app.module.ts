@@ -5,17 +5,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AddModalidadComponent } from './components/add-modalidad/add-modalidad.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './app.material.module';
+import { AddEmpleadoComponent } from './components/add-empleado/add-empleado.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddModalidadComponent,
+    AddEmpleadoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

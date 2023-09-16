@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <mat-toolbar color="primary">
+            <span>Registra Empleado</span>
+        </mat-toolbar>
+    </div>
+    <div class="row">
+        <mat-form-field class="col-md-4">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="objEmpleado.nombres">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="objEmpleado.fechaNacimiento">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field class="col-md-4">
+            <mat-label>Pais</mat-label>
+            <mat-select [(ngModel)]="objEmpleado.pais!.idPais">
+                <mat-option value="-1"> [Seleccione] </mat-option>
+                <ng-container *ngFor="let x of lstPais">
+                    <mat-option value="{{x.idPais}}">{{x.nombre}}</mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="objEmpleado.estado">
+                <mat-option value="-1"> [Seleccione] </mat-option>
+                <mat-option value="0"> [Activo] </mat-option>
+                <mat-option value="1"> [Inactivo] </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+   
+    <div  class="row">
+        <button mat-raised-button type="submit" color="primary" (click)="registraEmpleado()" >Registra</button>
+  </div>
+
+
+
+</div>
+
+<div>
+    <form class="content" (ngSubmit)="registraEmpleado()">
+        <div class="submit-form">
+
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-6">
+                    <label for="nombre">Nombres y Apellidos</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre"
+                        [(ngModel)]="objEmpleado.nombres" />
+                </div>
+                <div class="col-lg-3">
+                    <label for="fecNaci">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" name="fecNaci" id="fecNaci"
+                        [(ngModel)]="objEmpleado.fechaNacimiento" />
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 3%">
+
+                <div class="col-lg-3">
+                    <label for="pais">Pais</label>
+                    <select id="pais" name="pais" class="form-control" [(ngModel)]="objEmpleado.pais!.idPais">
+                        <option value="-1"> [Seleccione] </option>
+                        <option *ngFor="let x of lstPais" value="{{x.idPais}}"> {{x.nombre}} </option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" class="form-control" [(ngModel)]="objEmpleado.estado">
+                        <option value="-1"> [Seleccione] </option>
+                        <option value="0"> [Activo] </option>
+                        <option value="1"> [Inactivo] </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-12">
+                    <button class="btn btn-success">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
